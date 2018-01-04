@@ -51,19 +51,19 @@ export default {
 <style lang='scss' scoped>
 .bottom-bar{
     width: 100%;
-    height: 50px;
+    height: 40px;
     position: fixed;
     bottom: 0;
     left: 0;
     border-top: 1px solid #dbdbdb;
-    padding-top: 5px;
+    padding:5px 0;
 }
 .icon{
-    width: 25px;
+    width: 20px;
 }
 .item{
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
     color:#dbdbdb;
     letter-spacing: 3px;
 }
