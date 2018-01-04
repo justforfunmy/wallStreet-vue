@@ -1,6 +1,6 @@
 # wallstreet
 
-> A Vue.js project
+> 仿 华尔街见闻
 
 ## Build Setup
 
