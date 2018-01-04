@@ -3,7 +3,7 @@
         <img :src="bg!=='black'?blackSearchImg:whiteSearchImg" alt="" class="icon">
         <div class="list-wrapper fg" ref="wrapper">
             <ul class="list-content all-center" ref="content">
-                <li v-for='item in menu' class='menu-item' :style="{color:bg==='black'?'#fff':'#333'}">{{item.text}}</li>
+                <li v-for='item in menu' class='menu-item' :style="{color:bg==='black'?'#fff':'#dbdbdb'}">{{item.text}}</li>
             </ul>
         </div>
         <img :src="bg!=='black'?blackAddImg:whiteAddImg" alt="" class="icon">
@@ -61,18 +61,17 @@ export default {
     left:0;
     z-index: 1111;
 }
-.black-bg{
-    background: #222;
-}
 .list-wrapper{
     overflow: hidden;
 }
 .menu-item{
     padding:0 10px;
     white-space: nowrap;
+    font-size: 14px;
 }
 .icon{
-    width: 30px;
+    width: 25px;
+    padding:0 10px;
 }
 </style>
 
