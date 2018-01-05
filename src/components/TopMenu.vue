@@ -3,7 +3,12 @@
         <img :src="bg!=='black'?blackSearchImg:whiteSearchImg" alt="" class="icon">
         <div class="list-wrapper fg" ref="wrapper">
             <ul class="list-content all-center" ref="content">
-                <li v-for='item in menu' class='menu-item' :style="{color:bg==='black'?'#fff':'#dbdbdb'}">{{item.text}}</li>
+                <li 
+                  v-for='(item,index) in menu' 
+                  class='menu-item' 
+                  :style="{color:bg==='black'?'#fff':'#dbdbdb'}" 
+                  @click="handleClick(index)"
+                  :class="{active:index === activeIndex}">{{item.text}}</li>
             </ul>
         </div>
         <img :src="bg!=='black'?blackAddImg:whiteAddImg" alt="" class="icon">
@@ -21,7 +26,8 @@ export default {
           whiteAddImg:'/static/images/add-1.png',
           blackAddImg:'/static/images/add.png',
           blackBg:'rgba(0,0,0,0.1)',
-          whiteBg:'#fff'
+          whiteBg:'#fff',
+          activeIndex:0
       }
   },
   mounted(){
@@ -47,6 +53,9 @@ export default {
                     probeType: 2
               })
           })
+      },
+      handleClick(index){
+          this.activeIndex = index;
       }
   }
 }
@@ -72,6 +81,10 @@ export default {
 .icon{
     width: 25px;
     padding:0 10px;
+}
+.active{
+    color:#333 !important;
+    font-weight: bold;
 }
 </style>
 
