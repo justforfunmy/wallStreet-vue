@@ -1,7 +1,6 @@
 <template>
     <div>
         <top-menu :menu='menu' bg='white'></top-menu>
-        <test></test>
         <w-bottom :activeIndex='1'></w-bottom>
     </div>
 </template>

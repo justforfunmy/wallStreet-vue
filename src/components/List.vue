@@ -14,7 +14,7 @@
             <div class="fg news-content">
                 <span class="title">{{item.title}}</span>
                 <div class="notes">
-                    {{item.display_time}}  |  {{item.author.display_name}}
+                    {{item.display_time | dateFormat}}  |  {{item.author.display_name}}
                 </div>
             </div>
             <div :style="{background:'url('+item.image_uri+')'}" class="news-img"></div>
@@ -38,6 +38,7 @@
 
 <script>
 import axios from "axios";
+import moment from 'moment'
 export default {
   data() {
     return {
@@ -125,6 +126,12 @@ export default {
         }
       ]
     };
+  },
+  filters:{
+    dateFormat(val){
+      let day = moment.unix(val);
+      return moment(day).fromNow();
+    }
   },
   mounted() {
     this.wrapperHeight =
