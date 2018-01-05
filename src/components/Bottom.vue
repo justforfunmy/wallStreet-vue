@@ -57,6 +57,8 @@ export default {
     left: 0;
     border-top: 1px solid #dbdbdb;
     padding:5px 0;
+    background: #fff;
+    z-index: 1111;
 }
 .icon{
     width: 20px;

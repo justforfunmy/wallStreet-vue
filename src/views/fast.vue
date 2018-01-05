@@ -1,6 +1,7 @@
 <template>
     <div>
         <top-menu :menu='menu' bg='white'></top-menu>
+        <test></test>
         <w-bottom :activeIndex='1'></w-bottom>
     </div>
 </template>
@@ -8,10 +9,12 @@
 <script>
 import wBottom from "../components/Bottom";
 import topMenu from "../components/TopMenu";
+import test from '../components/loadMoreTest'
 export default {
   components: {
     wBottom,
-    topMenu
+    topMenu,
+    test
   },
   data() {
     return {

@@ -1,7 +1,11 @@
 <template>
   <div>
-      <top-menu bg='black' :menu='menu'></top-menu>
-      <banner :bannerList='bannerList'></banner>
+      <top-menu :bg='bg' :menu='menu'></top-menu>
+      <news-list>
+        <div slot="banner">
+          <banner :bannerList='bannerList'></banner>
+        </div>
+      </news-list>
       <w-bottom :activeIndex='0'></w-bottom>
   </div>
 </template>
@@ -10,11 +14,13 @@
 import topMenu from "../components/TopMenu";
 import wBottom from "../components/Bottom";
 import banner from '../components/Banner'
+import newsList from '../components/List'
 export default {
   components: {
     topMenu,
     wBottom,
-    banner
+    banner,
+    newsList
   },
   data() {
     return {
@@ -79,9 +85,17 @@ export default {
         img:'/static/images/banner-3.jpg'
       },{
         img:'/static/images/banner-4.jpg'
-      }]
+      }],
+      bg:'black'
     };
+  },
+  methods:{
+    
   }
 };
 </script>
+
+<style>
+</style>
+
 
