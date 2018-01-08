@@ -1,0 +1,58 @@
+[{
+    "title":"全球资产",
+    "shortContent":"隔夜市场观察：美元连续第四周下滑；本周迎来数据狂欢 美国CPI压轴登场",
+    "trendDatas":[{
+        "standard":"日本10年期国债",
+        "number":0.060,
+        "trend":"up",
+        "percent":1.69
+    },{
+        "standard":"欧洲Stoxx50",
+        "number":3607.63,
+        "trend":"up",
+        "percent":1.09
+    },{
+        "standard":"道琼斯",
+        "number":25295.87,
+        "trend":"up",
+        "percent":0.88
+    }]
+},{
+    "title":"亚洲股市",
+    "shortContent":"2018年全球市场格外红火 多类资产齐创新高",
+    "trendDatas":[{
+        "standard":"上证指数",
+        "number":3393.78,
+        "trend":"up",
+        "percent":0.06
+    },{
+        "standard":"恒生指数",
+        "number":30729.00,
+        "trend":"down",
+        "percent":0.28
+    },{
+        "standard":"日经225指数期货",
+        "number":23843.00,
+        "trend":"up",
+        "percent":0.20
+    }]
+},{
+    "title":"欧洲股市",
+    "shortContent":"非农就业报告向好 道指涨逾百点 美元走高",
+    "trendDatas":[{
+        "standard":"欧洲Stoxx50",
+        "number":3607.63,
+        "trend":"up",
+        "percent":1.09
+    },{
+        "standard":"英国富时100",
+        "number":7724.22,
+        "trend":"up",
+        "percent":0.37
+    },{
+        "standard":"德国DAX",
+        "number":13319.64,
+        "trend":"up",
+        "percent":1.16
+    }]
+}]

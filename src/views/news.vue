@@ -6,6 +6,7 @@
           <banner :bannerList='bannerList'></banner>
         </div>
       </news-list>
+      <trend :trendData='trendData'></trend>
       <w-bottom :activeIndex='0'></w-bottom>
   </div>
 </template>
@@ -15,12 +16,14 @@ import topMenu from "../components/TopMenu";
 import wBottom from "../components/Bottom";
 import banner from '../components/Banner'
 import newsList from '../components/List'
+import trend from '../components/trend'
 export default {
   components: {
     topMenu,
     wBottom,
     banner,
-    newsList
+    newsList,
+    trend
   },
   data() {
     return {
@@ -86,11 +89,24 @@ export default {
       },{
         img:'/static/images/banner-4.jpg'
       }],
-      bg:'black'
+      bg:'black',
+      trendData:[]
     };
   },
+  mounted(){
+    this.getTrendData();
+    console.log(this.trendData)
+  },
   methods:{
-    
+    getTrendData(){
+      let self = this;
+      this.$http.get('http://localhost:3000/wsTrendNumber').then(res=>{
+        console.log(res.data.data)
+        self.trendData = res.data.data;
+      }).catch(err=>{
+        console.log(err)
+      })
+    }
   }
 };
 </script>
