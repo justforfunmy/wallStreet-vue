@@ -1,5 +1,5 @@
 <template>
-  <div class="date">
+  <div class="date" @touchstart='touchStart' @touchend='touchEnd'>
       <!-- 年份 月份 -->
       <div class="month">
         <p>{{ currentYear }}年{{ currentMonth }}月</p>
@@ -39,7 +39,9 @@ export default {
       currentMonth: 1, // 月份
       currentDay: 1, // 日期
       currentWeek: 1, // 星期
-      days: []
+      days: [],
+      startX:0,
+      endX:0
     };
   },
 
@@ -127,6 +129,21 @@ export default {
       alert(
         this.formatDate(date.getFullYear(), date.getMonth() + 1, date.getDate())
       );
+    },
+
+    touchStart(e){
+      console.log(e)
+      this.startX = e.changedTouches[0].pageX
+    },
+    touchEnd(e){
+      console.log(e)
+      this.endX = e.changedTouches[0].pageX;
+      let distanceX = this.endX-this.startX;
+      if(distanceX<0){
+        this.weekNext()
+      }else{
+        this.weekPre()
+      }
     }
   }
 };
