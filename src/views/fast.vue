@@ -2,16 +2,21 @@
     <div>
         <top-menu :menu='menu' bg='white'></top-menu>
         <w-bottom :activeIndex='1'></w-bottom>
+        <div class="content">
+          <calendar></calendar>
+        </div>
     </div>
 </template>
 
 <script>
 import wBottom from "../components/Bottom";
 import topMenu from "../components/TopMenu";
+import calendar from '../components/calendar'
 export default {
   components: {
     wBottom,
     topMenu,
+    calendar
   },
   data() {
     return {
