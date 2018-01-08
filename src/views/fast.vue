@@ -2,19 +2,16 @@
     <div>
         <top-menu :menu='menu' bg='white'></top-menu>
         <w-bottom :activeIndex='1'></w-bottom>
-        <trend></trend>
     </div>
 </template>
 
 <script>
 import wBottom from "../components/Bottom";
 import topMenu from "../components/TopMenu";
-import trend from '../components/trend'
 export default {
   components: {
     wBottom,
     topMenu,
-    trend
   },
   data() {
     return {

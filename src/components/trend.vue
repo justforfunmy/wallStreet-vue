@@ -16,7 +16,11 @@
                             <div class="standard">{{subItem.standard}}</div>
                             <div class="all-center num">
                                 <div class="number fg">{{subItem.number}}</div>
-                                <div class="" :style="{color:subItem.trend==='up'?'red':'green'}"><span v-if="subItem.trend==='up'">+</span><span v-if="subItem.trend==='down'">-</span>{{subItem.percent}}%</div>
+                                <div class="" :style="{color:subItem.trend==='up'?'red':'green'}">
+                                    <span v-if="subItem.trend==='up'">+</span>
+                                    <span v-if="subItem.trend==='down'">-</span>
+                                    {{subItem.percent}}%
+                                </div>
                             </div>
                         </div>
                     </div>
