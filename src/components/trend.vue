@@ -75,7 +75,7 @@ export default {
   }
   img {
     max-height: 70%;
-    margin-right: 15px;
+    margin-right: 10px;
   }
 }
 .main {
