@@ -11,7 +11,11 @@
                   :class="{active:index === activeIndex}">{{item.text}}</li>
             </ul>
         </div>
-        <img :src="bg!=='black'?blackAddImg:whiteAddImg" alt="" class="icon">
+        <img 
+          :src="bg!=='black'?blackAddImg:whiteAddImg" 
+          class="icon" 
+          :class="{rotate:isRotated}"
+          @click="handleAdd">
     </div>
 </template>
 
@@ -27,7 +31,8 @@ export default {
           blackAddImg:'/static/images/add.png',
           blackBg:'rgba(0,0,0,0.1)',
           whiteBg:'#fff',
-          activeIndex:0
+          activeIndex:0,
+          isRotated:false
       }
   },
   mounted(){
@@ -56,6 +61,11 @@ export default {
       },
       handleClick(index){
           this.activeIndex = index;
+      },
+      handleAdd(){
+          this.isRotated = !this.isRotated;
+          //向父组件传递值，是否添加
+          this.$emit('changeRotated',this.isRotated)
       }
   }
 }
@@ -81,6 +91,10 @@ export default {
 .icon{
     width: 25px;
     padding:0 10px;
+    transition: all 1s;
+}
+.rotate{
+    transform: rotateZ(45deg)
 }
 .active{
     color:#333 !important;

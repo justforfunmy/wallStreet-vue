@@ -4,10 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import './assets/style.css'
+import './assets/animate.css'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import axios from 'axios'
 Vue.use(MintUI)
+
+import VueDND from 'awe-dnd'
+Vue.use(VueDND)
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios;

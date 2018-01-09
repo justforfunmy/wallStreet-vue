@@ -1,34 +1,47 @@
-*{
-    margin:0;
-    padding:0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.flex{
-    display: flex;
+.flex {
+  display: flex;
 }
 
-.fg{
-    flex:1
+.fg {
+  flex: 1
 }
 
-.a-center{
-    align-items: center;
+.a-center {
+  align-items: center;
 }
 
-.j-center{
-    justify-content: center
+.j-center {
+  justify-content: center
 }
 
-.all-center{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.all-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-li{
-    list-style: none;
+li {
+  list-style: none;
 }
 
-.content{
-    margin-top: 40px;
+.content {
+  margin-top: 40px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s
+}
+
+.fade-enter,
+.fade-leave-to
+/* .fade-leave-active in below version 2.1.8 */
+
+{
+  opacity: 0
 }

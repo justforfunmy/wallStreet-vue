@@ -156,7 +156,7 @@ export default {
       const that = this;
       const loadmore = this.$refs.loadmore;
       axios
-        .get("http://localhost:3000/list")
+        .get("http://localhost:3000/wsTrendNumber")
         .then(res => {
           that.topStatus = "";
           loadmore.onTopLoaded();

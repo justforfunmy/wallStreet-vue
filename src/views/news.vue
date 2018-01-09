@@ -1,12 +1,15 @@
 <template>
   <div>
-      <top-menu :bg='bg' :menu='menu'></top-menu>
+      <top-menu :bg='bg' :menu='menu' @changeRotated='handleChange'></top-menu>
       <news-list>
         <div slot="banner">
           <banner :bannerList='bannerList'></banner>
         </div>
       </news-list>
       <trend :trendData='trendData'></trend>
+      <transition name="fade">
+          <add-channel v-show="isShowed" :menu='menu'></add-channel>
+      </transition>
       <w-bottom :activeIndex='0'></w-bottom>
   </div>
 </template>
@@ -17,13 +20,15 @@ import wBottom from "../components/Bottom";
 import banner from '../components/Banner'
 import newsList from '../components/List'
 import trend from '../components/trend'
+import addChannel from '../components/addChannel'
 export default {
   components: {
     topMenu,
     wBottom,
     banner,
     newsList,
-    trend
+    trend,
+    addChannel
   },
   data() {
     return {
@@ -90,7 +95,8 @@ export default {
         img:'/static/images/banner-4.jpg'
       }],
       bg:'black',
-      trendData:[]
+      trendData:[],
+      isShowed:false
     };
   },
   mounted(){
@@ -106,6 +112,9 @@ export default {
       }).catch(err=>{
         console.log(err)
       })
+    },
+    handleChange(data){
+      this.isShowed = data;
     }
   }
 };
