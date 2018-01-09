@@ -4,47 +4,67 @@
           <p>已选频道</p>
           <span>请拖动排序</span>
       </div>
-      <div class="items">
+      <draggable v-model='channels' @start="drag=true" @end="drag=false" class="items">
           <div 
-            v-for="(item,index) in menu"
+            v-for="(item,index) in channels"
             :key="index"
             class="all-center">
             <div>{{item.text}}</div>
             <img :src="delIcon" alt="" class="icon">
           </div>
-      </div>
+      </draggable>
       <div class="flex title">
           <p>未选频道</p>
       </div>
-      <!-- <div class="items">
-          <div 
-            v-for="(item,index) in menu"
-            :key="index"
-            class="all-center"
-            v-dragging='{item:item,list:menu,group:"item"}'>
-            <div>{{item.text}}</div>
-            <img :src="delIcon" alt="" class="icon">
-          </div>
-      </div> -->
-      <div class="finishBtn">完成</div>
+      
+      <div class="finishBtn" @click="finish">完成</div>
   </div>
 </template>
 
 <script>
+import draggable from 'vuedraggable'
 export default {
   props:['menu'],
+  computed:{
+      channels:{
+          get(){
+              if(this.fakeChannels.length === 0){
+                  return this.menu
+              }
+              return this.fakeChannels
+              
+          },
+          set(value){
+              console.log(value)
+              this.fakeChannels = value;
+          }
+      }
+  },
   data(){
       return{
           addIcon:'/static/images/addChannel.png',
-          delIcon:'/static/images/delChannel.png'
+          delIcon:'/static/images/delChannel.png',
+          drag:false,
+          fakeChannels:[]
       }
+  },
+  components:{
+      draggable
+  },
+  methods:{
+      finish(){
+          console.log(this.channels)
+      },
+  },
+  mounted(){
+      console.log(this.channels)
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .channel{
-    position: absolute;
+    position: fixed;
     top:40px;
     left:0;
     bottom:0;

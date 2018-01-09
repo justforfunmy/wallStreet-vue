@@ -10,8 +10,8 @@ import 'mint-ui/lib/style.css'
 import axios from 'axios'
 Vue.use(MintUI)
 
-import VueDND from 'awe-dnd'
-Vue.use(VueDND)
+// import VueDND from 'awe-dnd'
+// Vue.use(VueDND)
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios;
