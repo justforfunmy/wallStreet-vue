@@ -21,8 +21,12 @@
 
 <script>
 import BScroll from 'better-scroll'
+import Bus from '../eventBus'
 export default {
   props:['menu','bg'],
+  computed:{
+
+  },
   data(){
       return {
           whiteSearchImg:'/static/images/search-1.png',
@@ -32,11 +36,15 @@ export default {
           blackBg:'rgba(0,0,0,0.1)',
           whiteBg:'#fff',
           activeIndex:0,
-          isRotated:false
+          isRotated:false,
       }
   },
   mounted(){
-      this.initScroll()
+      this.initScroll();
+      const self = this;
+      Bus.$on('rotatedChanged',(val)=>{
+          self.isRotated = val;
+      })
   },
   methods:{
       initScroll(){

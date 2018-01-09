@@ -54,10 +54,11 @@ export default {
   methods:{
       finish(){
           console.log(this.channels)
+          this.$emit('changeMenu',this.channels)
       },
   },
   mounted(){
-      console.log(this.channels)
+      
   }
 }
 </script>

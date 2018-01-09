@@ -1,6 +1,6 @@
 <template>
   <div>
-      <top-menu :bg='bg' :menu='menu' @changeRotated='handleChange'></top-menu>
+      <top-menu :bg='bg' :menu='menu' @changeRotated='handleChange' :isRotated='isShowed'></top-menu>
       <news-list>
         <div slot="banner">
           <banner :bannerList='bannerList'></banner>
@@ -8,7 +8,7 @@
       </news-list>
       <trend :trendData='trendData'></trend>
       <transition name="fade">
-          <add-channel v-show="isShowed" :menu='menu'></add-channel>
+          <add-channel v-show="isShowed" :menu='menu' @changeMenu='changeMenu'></add-channel>
       </transition>
       <w-bottom :activeIndex='0'></w-bottom>
   </div>
@@ -21,6 +21,7 @@ import banner from '../components/Banner'
 import newsList from '../components/List'
 import trend from '../components/trend'
 import addChannel from '../components/addChannel'
+import Bus from '../eventBus'
 export default {
   components: {
     topMenu,
@@ -115,6 +116,11 @@ export default {
     },
     handleChange(data){
       this.isShowed = data;
+    },
+    changeMenu(val){
+      this.menu = val;
+      this.handleChange(false);
+      Bus.$emit('rotatedChanged',false)
     }
   }
 };
