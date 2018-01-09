@@ -35,7 +35,6 @@ export default {
               
           },
           set(value){
-              console.log(value)
               this.fakeChannels = value;
           }
       }
@@ -53,7 +52,6 @@ export default {
   },
   methods:{
       finish(){
-          console.log(this.channels)
           this.$emit('changeMenu',this.channels)
       },
   },

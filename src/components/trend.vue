@@ -58,7 +58,7 @@ export default {
 <style lang="scss" scoped>
 .trend {
   width: 100%;
-  position: absolute;
+  position: fixed;
   bottom: -90px;
   left: 0;
   transition: all 1s ease;
