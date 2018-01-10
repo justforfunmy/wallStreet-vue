@@ -1,12 +1,7 @@
 <template>
   <div>
       <top-menu :bg='bg' :menu='menu' @changeRotated='handleChange' :isRotated='isShowed'></top-menu>
-      <news-list>
-        <div slot="banner">
-          <banner :bannerList='bannerList'></banner>
-        </div>
-      </news-list>
-      <trend :trendData='trendData'></trend>
+      <router-view></router-view>
       <transition name="fade">
           <add-channel v-show="isShowed" :menu='menu' @changeMenu='changeMenu'></add-channel>
       </transition>
@@ -17,28 +12,24 @@
 <script>
 import topMenu from "../components/TopMenu";
 import wBottom from "../components/Bottom";
-import banner from '../components/Banner'
-import newsList from '../components/List'
-import trend from '../components/trend'
 import addChannel from '../components/addChannel'
 import Bus from '../eventBus'
 export default {
   components: {
     topMenu,
     wBottom,
-    banner,
-    newsList,
-    trend,
     addChannel
   },
   data() {
     return {
       menu: [
         {
-          text: "全球"
+          text: "全球",
+          name:'global'
         },
         {
-          text: "付费"
+          text: "付费",
+          name:'paid'
         },
         {
           text: "免费"
@@ -86,34 +77,13 @@ export default {
           text: "日本"
         }
       ],
-      bannerList:[{
-        img:'/static/images/banner-1.jpg'
-      },{
-        img:'/static/images/banner-2.jpg'
-      },{
-        img:'/static/images/banner-3.jpg'
-      },{
-        img:'/static/images/banner-4.jpg'
-      }],
       bg:'black',
-      trendData:[],
       isShowed:false
     };
   },
   mounted(){
-    this.getTrendData();
-    console.log(this.trendData)
   },
   methods:{
-    getTrendData(){
-      let self = this;
-      this.$http.get('http://localhost:3000/wsTrendNumber').then(res=>{
-        console.log(res.data.data)
-        self.trendData = res.data.data;
-      }).catch(err=>{
-        console.log(err)
-      })
-    },
     handleChange(data){
       this.isShowed = data;
     },

@@ -5,6 +5,8 @@ import Fast from '../views/fast.vue'
 import Selected from '../views/selected.vue'
 import Trend from '../views/trend.vue'
 import Me from '../views/me.vue'
+import Global from '../views/global.vue'
+import Paid from '../views/paid.vue'
 
 Vue.use(Router)
 
@@ -13,7 +15,17 @@ export default new Router({
     {
       path: '/news',
       name: 'news',
-      component: News
+      component: News,
+      children:[{
+        path:'global',
+        component:Global,
+        name:'global'
+      },{
+        path:'paid',
+        component:Paid,
+        name:'paid'
+      }],
+      redirect:{name:'global'}
     },
     {
       path: '/fast',

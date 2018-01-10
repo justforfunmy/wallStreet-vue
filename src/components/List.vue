@@ -9,7 +9,7 @@
     @translate-change="translateChange"
     @bottom-status-change="handleBottomChange">
     <slot name='banner'></slot>
-    <ul class="news-list">
+    <ul class="news-list" :class="{hasTopBlank:hasTopBlank}">
         <li v-for="(item,index) in list" :key="index" class="all-center news-item">
             <div class="fg news-content">
                 <span class="title">{{item.title}}</span>
@@ -127,6 +127,7 @@ export default {
       ]
     };
   },
+  props:['hasTopBlank'],
   filters:{
     dateFormat(val){
       let day = moment.unix(val);
@@ -252,6 +253,9 @@ export default {
   height: 90px;
   background-size: cover !important;
   background-position: center center !important;
+}
+.hasTopBlank{
+  margin-top: 40px
 }
 </style>
 

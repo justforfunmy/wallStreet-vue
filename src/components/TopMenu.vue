@@ -1,18 +1,18 @@
 <template>
-    <div class="top-menu all-center" :style="{background:bg ==='black'?blackBg:whiteBg}">
-        <img :src="bg!=='black'?blackSearchImg:whiteSearchImg" alt="" class="icon">
+    <div class="top-menu all-center" :style="{background:topBg ==='black'?blackBg:whiteBg}">
+        <img :src="topBg!=='black'?blackSearchImg:whiteSearchImg" alt="" class="icon">
         <div class="list-wrapper fg" ref="wrapper">
             <ul class="list-content all-center" ref="content">
                 <li 
                   v-for='(item,index) in menu' 
                   class='menu-item' 
-                  :style="{color:bg==='black'?'#fff':'#dbdbdb'}" 
+                  :style="{color:topBg==='black'?'#fff':'#dbdbdb'}" 
                   @click="handleClick(index)"
                   :class="{active:index === activeIndex}">{{item.text}}</li>
             </ul>
         </div>
         <img 
-          :src="bg!=='black'?blackAddImg:whiteAddImg" 
+          :src="topBg!=='black'?blackAddImg:whiteAddImg" 
           class="icon" 
           :class="{rotate:isRotated}"
           @click="handleAdd">
@@ -25,7 +25,18 @@ import Bus from '../eventBus'
 export default {
   props:['menu','bg'],
   computed:{
-
+      topBg:{
+          get(){
+              if(this.fakeBg === ''){
+                  return this.bg
+              }else{
+                  return this.fakeBg
+              }
+          },
+          set(val){
+              this.fakeBg = val;
+          }
+      }
   },
   data(){
       return {
@@ -33,10 +44,11 @@ export default {
           blackSearchImg:'/static/images/search.png',
           whiteAddImg:'/static/images/add-1.png',
           blackAddImg:'/static/images/add.png',
-          blackBg:'rgba(0,0,0,0.1)',
+          blackBg:'rgba(0,0,0,0)',
           whiteBg:'#fff',
           activeIndex:0,
           isRotated:false,
+          fakeBg:''
       }
   },
   mounted(){
@@ -69,6 +81,15 @@ export default {
       },
       handleClick(index){
           this.activeIndex = index;
+          const self = this;
+          const name = self.menu[index].name;
+          this.$router.push({name});
+          if(name !== 'global'){
+              this.topBg = 'white'
+          }else{
+              this.topBg = 'black'
+          }
+          
       },
       handleAdd(){
           this.isRotated = !this.isRotated;
@@ -105,7 +126,7 @@ export default {
     transform: rotateZ(45deg)
 }
 .active{
-    color:#333 !important;
+    color:#111 !important;
     font-weight: bold;
 }
 </style>
